@@ -7,7 +7,14 @@ class index(View):
     def get(self,request):
         
         return render(request,"index.html")  
-    
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        login_obj = LoginTable.objects.get(Username=username, Password=password)
+        if login_obj.Type == "admin":
+
+            return HttpResponse(<script>alert("welcome to a");window.location="" )
+
 
 
 
